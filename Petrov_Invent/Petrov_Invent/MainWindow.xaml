@@ -1,0 +1,25 @@
+﻿<Window x:Class="Petrov_Invent.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Petrov_Invent"
+        mc:Ignorable="d"
+        Title="ИС по прокату спортивного инвентаря" Height="600" Width="1000" 
+        MinHeight="600" MinWidth="1000"
+        WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Background="LightGreen">
+            <Image Source="/resources/logo.png" VerticalAlignment="Center" 
+               HorizontalAlignment="Left"/>
+            <Label VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="Прокат" FontSize="35"></TextBlock>
+            </Label>
+        </Grid>
+        <Frame Grid.Row="1" x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
+    </Grid>
+</Window>
