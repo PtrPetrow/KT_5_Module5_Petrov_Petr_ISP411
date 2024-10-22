@@ -10,14 +10,14 @@
         WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Background="LightGreen">
             <Image Source="/resources/logo.png" VerticalAlignment="Center" 
                HorizontalAlignment="Left"/>
             <Label VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="Прокат" FontSize="35"></TextBlock>
+                <TextBlock Text="Прокат"></TextBlock>
             </Label>
         </Grid>
         <Frame Grid.Row="1" x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>

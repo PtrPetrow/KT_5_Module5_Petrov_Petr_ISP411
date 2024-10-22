@@ -5,17 +5,18 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Petrov_Invent.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="1000"
       Title="ИС по прокату спортивного инвентаря" Height="600" Width="1000" 
       MinHeight="600" MinWidth="1000">
 
     <Grid Background="White" >
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Label Content="Логин" FontSize="20"></Label>
-            <TextBox x:Name="login" ></TextBox>
-            <Label Content="Пароль"  FontSize="20"></Label>
-            <PasswordBox x:Name="password"></PasswordBox>
-            <Button Content="Войти" Click="Button_Click"  FontSize="20"></Button>
+            <Label Content="Логин" FontSize="30"></Label>
+            <TextBox x:Name="login" Margin="0,0,0,5" Width="200" Height="20"></TextBox>
+            <Label Content="Пароль"  FontSize="30"></Label>
+            <PasswordBox x:Name="password" Margin="0,0,0,10" Width="200" Height="20"></PasswordBox>
+            <Button x:Name="EnterButton" Content="Войти" Background="Green"
+             Click="Button_Click" FontSize="35" Height="60"></Button>
         </StackPanel>
     </Grid>
 </Page>

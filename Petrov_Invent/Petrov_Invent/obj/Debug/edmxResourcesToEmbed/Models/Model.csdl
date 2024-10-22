@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InventModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Enter">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="EntName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="MainTable" Relationship="Self.FK_MainTable_Enter" FromRole="Enter" ToRole="MainTable" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="GenName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="MainTable" Relationship="Self.FK_MainTable_Gender" FromRole="Gender" ToRole="MainTable" />
+  </EntityType>
+  <EntityType Name="MainTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="idRole" Type="Int32" Nullable="false" />
+    <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="pasSer" Type="Int32" Nullable="false" />
+    <Property Name="pasNum" Type="Int32" Nullable="false" />
+    <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="lastEnter" Type="DateTime" Precision="0" />
+    <Property Name="idEnter" Type="Int32" />
+    <Property Name="idGen" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Enter" Relationship="Self.FK_MainTable_Enter" FromRole="MainTable" ToRole="Enter" />
+    <NavigationProperty Name="Gender" Relationship="Self.FK_MainTable_Gender" FromRole="MainTable" ToRole="Gender" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_MainTable_Role" FromRole="MainTable" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="MainTable" Relationship="Self.FK_MainTable_Role" FromRole="Role" ToRole="MainTable" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_MainTable_Enter">
+    <End Role="Enter" Type="Self.Enter" Multiplicity="0..1" />
+    <End Role="MainTable" Type="Self.MainTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Enter">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="MainTable">
+        <PropertyRef Name="idEnter" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MainTable_Gender">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+    <End Role="MainTable" Type="Self.MainTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="MainTable">
+        <PropertyRef Name="idGen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MainTable_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="MainTable" Type="Self.MainTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="MainTable">
+        <PropertyRef Name="idRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="InventEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Enter" EntityType="Self.Enter" />
+    <EntitySet Name="Gender" EntityType="Self.Gender" />
+    <EntitySet Name="MainTable" EntityType="Self.MainTable" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_MainTable_Enter" Association="Self.FK_MainTable_Enter">
+      <End Role="Enter" EntitySet="Enter" />
+      <End Role="MainTable" EntitySet="MainTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MainTable_Gender" Association="Self.FK_MainTable_Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="MainTable" EntitySet="MainTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MainTable_Role" Association="Self.FK_MainTable_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="MainTable" EntitySet="MainTable" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -7,7 +7,7 @@ using System.Windows.Controls;
 
 namespace Petrov_Invent.Classes
 {
-    class Manager
+    internal class Manager
     {
         public static Frame MainFrame { get; set; }
     }

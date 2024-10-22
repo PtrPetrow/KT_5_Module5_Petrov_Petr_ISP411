@@ -24,5 +24,15 @@ namespace Petrov_Invent.Pages
         {
             InitializeComponent();
         }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Classes.Manager.MainFrame.Navigate(new Pages.Autorization());
+        }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            Classes.Manager.MainFrame.Navigate(new Pages.AddWindow());
+        }
     }
 }
